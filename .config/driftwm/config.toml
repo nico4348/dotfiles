@@ -9,11 +9,11 @@ autostart = [
     "wl-paste --watch cliphist store",      # historial de portapapeles
     "wlsunset -S 07:00 -s 19:00 -t 3500 -T 6500",  # luz azul: 3500K noche, 6500K dia
     "swayidle -w before-sleep 'swaylock -f -c 1e1e2e'",  # solo bloquea al suspender
-    "ghostty",                              # terminal 1
-    "ghostty",                              # terminal 2
-    "ghostty",                              # terminal 3
-    "ghostty",                              # terminal 4
-    "ghostty -e peaclock",                  # reloj
+    "ghostty --title=term1",                # terminal 1
+    "ghostty --title=term2",                # terminal 2
+    "ghostty --title=term3",                # terminal 3
+    "ghostty --title=term4",                # terminal 4 (centro)
+    "ghostty --title=peaclock -e peaclock", # reloj (encima de term4)
     "brave",                                # navegador
 ]
 
@@ -100,8 +100,44 @@ shader_path = "/usr/share/driftwm/wallpapers/compass_grid.glsl"
 "XF86MonBrightnessUp" = "spawn brightnessctl set +5%"
 "XF86MonBrightnessDown" = "spawn brightnessctl set 5%-"
 
-# === Terminal transparente con blur ===
+# === Window rules: layout en fila, term4 al centro ===
+
 [[window_rules]]
-app_id = "com.mitchellh.ghostty"
+title = "term1"
+position = [-2200, 0]
+size = [700, 550]
 opacity = 0.88
 blur = true
+
+[[window_rules]]
+title = "term2"
+position = [-1460, 0]
+size = [700, 550]
+opacity = 0.88
+blur = true
+
+[[window_rules]]
+title = "term3"
+position = [-720, 0]
+size = [700, 550]
+opacity = 0.88
+blur = true
+
+[[window_rules]]
+title = "term4"
+position = [0, 0]
+size = [700, 550]
+opacity = 0.88
+blur = true
+
+[[window_rules]]
+title = "peaclock"
+position = [0, 575]
+size = [500, 250]
+opacity = 0.88
+blur = true
+
+[[window_rules]]
+app_id = "brave-browser"
+position = [1200, 0]
+size = [1100, 800]
