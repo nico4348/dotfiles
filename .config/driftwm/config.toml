@@ -4,6 +4,7 @@ focus_follows_mouse = true
 
 # Programas al iniciar
 autostart = [
+    "gnome-keyring-daemon --start --components=secrets,pkcs11", # keyring
     "waybar",                               # barra de estado
     "swaync",                               # notificaciones
     "wl-paste --watch cliphist store",      # historial de portapapeles
@@ -148,7 +149,7 @@ blur = true
 
 [[window_rules]]
 app_id = "brave-browser"
-position = [1200, 0]
+position = [1800, 0]
 size = [1920, 1080]
 
 [[window_rules]]
@@ -166,6 +167,10 @@ app_id = "com.mitchellh.ghostty"
 size = [1100, 700]
 opacity = 0.88
 blur = true
+
+[[window_rules]]
+app_id = "tableplus"
+size = [2800, 900]
 
 [[window_rules]]
 app_id = "code-oss"
