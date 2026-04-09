@@ -25,7 +25,7 @@ palette = 14=#94e2d5
 palette = 15=#a6adc8
 
 # Cursor morado
-cursor-color = cba6f7
+cursor-color = #cba6f7
 cursor-style = block
 cursor-style-blink = true
 

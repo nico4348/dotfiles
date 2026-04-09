@@ -12,3 +12,6 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Fastfetch al abrir terminal
 fastfetch
+
+# opencode
+export PATH=/home/kofi/.opencode/bin:$PATH

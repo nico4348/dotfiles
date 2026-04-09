@@ -22,6 +22,10 @@ autostart = [
 MOZ_ENABLE_WAYLAND = "1"
 QT_QPA_PLATFORM = "wayland"
 ELECTRON_OZONE_PLATFORM_HINT = "auto"
+GBM_BACKEND = "nvidia-drm"
+__GLX_VENDOR_LIBRARY_NAME = "nvidia"
+WLR_NO_HARDWARE_CURSORS = "1"
+LIBVA_DRIVER_NAME = "nvidia"
 
 # === Teclado ===
 [input.keyboard]
@@ -42,7 +46,7 @@ accel_profile = "flat"
 
 # === Cursor ===
 [cursor]
-theme = "catppuccin-mocha-mauve-cursors"
+theme = "catppuccin-mocha-lavender-cursors"
 size = 32
 
 # === Navegacion ===
@@ -72,7 +76,7 @@ blur_strength = 1.2
 
 # === Fondo animado ===
 [background]
-shader_path = "/usr/share/driftwm/wallpapers/compass_grid.glsl"
+shader_path = "~/.config/driftwm/dark_sea_purple.glsl"
 
 # === Atajos de teclado ===
 [keybindings]
@@ -100,33 +104,38 @@ shader_path = "/usr/share/driftwm/wallpapers/compass_grid.glsl"
 "XF86MonBrightnessUp" = "spawn brightnessctl set +5%"
 "XF86MonBrightnessDown" = "spawn brightnessctl set 5%-"
 
+# === Monitor ===
+[[outputs]]
+name = "DP-1"
+mode = "3440x1440@165"
+
 # === Window rules: layout en fila, term4 al centro ===
 
 [[window_rules]]
 title = "term1"
-position = [-2200, 0]
-size = [700, 550]
+position = [-3330, 0]
+size = [1100, 700]
 opacity = 0.88
 blur = true
 
 [[window_rules]]
 title = "term2"
-position = [-1460, 0]
-size = [700, 550]
+position = [-2220, 0]
+size = [1100, 700]
 opacity = 0.88
 blur = true
 
 [[window_rules]]
 title = "term3"
-position = [-720, 0]
-size = [700, 550]
+position = [-1110, 0]
+size = [1100, 700]
 opacity = 0.88
 blur = true
 
 [[window_rules]]
 title = "term4"
 position = [0, 0]
-size = [700, 550]
+size = [1100, 700]
 opacity = 0.88
 blur = true
 
@@ -140,4 +149,24 @@ blur = true
 [[window_rules]]
 app_id = "brave-browser"
 position = [1200, 0]
-size = [1100, 800]
+size = [1920, 1080]
+
+[[window_rules]]
+app_id = "chromium"
+position = [1200, 0]
+size = [1920, 1080]
+
+[[window_rules]]
+app_id = "firefox"
+position = [1200, 0]
+size = [1920, 1080]
+
+[[window_rules]]
+app_id = "com.mitchellh.ghostty"
+size = [1100, 700]
+opacity = 0.88
+blur = true
+
+[[window_rules]]
+app_id = "code-oss"
+size = [1920, 1080]
