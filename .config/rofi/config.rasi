@@ -1,0 +1,120 @@
+configuration {
+    modes: "drun,run,window";
+    show-icons: true;
+    terminal: "ghostty";
+    font: "JetBrains Mono 13";
+    icon-theme: "Papirus-Dark";
+    drun-display-format: "{name}";
+    display-drun: "  Apps";
+    display-run: "  Run";
+    display-window: "  Windows";
+}
+
+@theme "/dev/null"
+
+* {
+    bg:         #1e1e2eee;
+    bg-alt:     #313244cc;
+    fg:         #cdd6f4;
+    fg-dim:     #6c7086;
+    accent:     #cba6f7;
+    urgent:     #f38ba8;
+    border-col: #cba6f744;
+    selected:   #cba6f722;
+
+    background-color: transparent;
+    text-color: @fg;
+    margin: 0;
+    padding: 0;
+    spacing: 0;
+}
+
+window {
+    width: 550px;
+    background-color: @bg;
+    border: 2px;
+    border-color: @border-col;
+    border-radius: 16px;
+    padding: 0;
+    location: center;
+    anchor: center;
+}
+
+mainbox {
+    padding: 0;
+    children: [ inputbar, message, listview ];
+}
+
+inputbar {
+    padding: 16px 20px;
+    spacing: 12px;
+    children: [ prompt, entry ];
+    background-color: @bg-alt;
+    border-radius: 16px 16px 0 0;
+}
+
+prompt {
+    text-color: @accent;
+    font: "JetBrains Mono Bold 13";
+}
+
+entry {
+    placeholder: "Buscar...";
+    placeholder-color: @fg-dim;
+    text-color: @fg;
+}
+
+message {
+    padding: 8px 20px;
+    background-color: @bg-alt;
+}
+
+textbox {
+    text-color: @fg-dim;
+}
+
+listview {
+    lines: 8;
+    padding: 8px 0;
+    fixed-height: true;
+    scrollbar: false;
+}
+
+element {
+    padding: 10px 20px;
+    spacing: 14px;
+}
+
+element selected.normal {
+    background-color: @selected;
+    border-radius: 0;
+}
+
+element normal.active,
+element alternate.active {
+    text-color: @accent;
+}
+
+element selected.active {
+    background-color: @selected;
+    text-color: @accent;
+}
+
+element normal.urgent,
+element alternate.urgent {
+    text-color: @urgent;
+}
+
+element-icon {
+    size: 28px;
+    vertical-align: 0.5;
+}
+
+element-text {
+    vertical-align: 0.5;
+    text-color: inherit;
+}
+
+element-text selected {
+    text-color: @accent;
+}

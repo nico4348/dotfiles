@@ -1,0 +1,102 @@
+# === General ===
+mod_key = "super"
+focus_follows_mouse = true
+
+# Programas al iniciar
+autostart = [
+    "ghostty",                              # terminal al arrancar
+    "waybar",                               # barra de estado (si la tienes)
+    "swaync",                               # notificaciones (si lo tienes)
+    "wl-paste --watch cliphist store",      # historial de portapapeles
+    "wlsunset -S 07:00 -s 19:00 -t 3500 -T 6500",  # luz azul: 3500K noche, 6500K dia
+    "swayidle -w before-sleep 'swaylock -f -c 1e1e2e'",  # solo bloquea al suspender
+]
+
+# === Variables de entorno ===
+[env]
+MOZ_ENABLE_WAYLAND = "1"
+QT_QPA_PLATFORM = "wayland"
+ELECTRON_OZONE_PLATFORM_HINT = "auto"
+
+# === Teclado ===
+[input.keyboard]
+layout = "es"
+repeat_rate = 30
+repeat_delay = 300
+
+# === Trackpad ===
+[input.trackpad]
+tap_to_click = true
+natural_scroll = true
+tap_and_drag = true
+accel_speed = 0.2
+
+# === Mouse ===
+[input.mouse]
+accel_profile = "flat"
+
+# === Cursor ===
+[cursor]
+theme = "catppuccin-mocha-mauve-cursors"
+size = 32
+
+# === Navegacion ===
+[navigation]
+friction = 0.93
+animation_speed = 0.35
+
+# === Zoom ===
+[zoom]
+step = 1.15
+
+# === Snap (imanes entre ventanas) ===
+[snap]
+enabled = true
+gap = 10.0
+
+# === Decoraciones ===
+[decorations]
+bg_color = "#1e1e2e"
+fg_color = "#cdd6f4"
+corner_radius = 12
+
+# === Efectos ===
+[effects]
+blur_radius = 3
+blur_strength = 1.2
+
+# === Fondo animado ===
+[background]
+shader_path = "/usr/share/driftwm/wallpapers/compass_grid.glsl"
+
+# === Atajos de teclado ===
+[keybindings]
+"mod+return" = "exec ghostty"
+"mod+d" = "exec rofi -show drun -show-icons"
+"mod+q" = "close-window"
+"mod+f" = "toggle-fullscreen"
+"mod+m" = "fit-window"
+"mod+c" = "center-window"
+"mod+a" = "home-toggle"
+"mod+w" = "zoom-to-fit"
+"mod+l" = "spawn swaylock -f -c 1e1e2e"
+"mod+ctrl+shift+q" = "quit"
+
+# Capturas de pantalla
+"Print" = "spawn grim - | wl-copy"
+"shift+Print" = "spawn grim -g \"$(slurp -d)\" - | wl-copy"
+
+# Volumen
+"XF86AudioRaiseVolume" = "spawn wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+"XF86AudioLowerVolume" = "spawn wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+"XF86AudioMute" = "spawn wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+
+# Brillo
+"XF86MonBrightnessUp" = "spawn brightnessctl set +5%"
+"XF86MonBrightnessDown" = "spawn brightnessctl set 5%-"
+
+# === Terminal transparente con blur ===
+[[window_rules]]
+app_id = "com.mitchellh.ghostty"
+opacity = 0.88
+blur = true

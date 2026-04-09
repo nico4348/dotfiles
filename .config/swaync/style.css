@@ -1,0 +1,100 @@
+/* Catppuccin Mocha Mauve - swaync */
+
+* {
+    font-family: "JetBrains Mono";
+    font-size: 13px;
+}
+
+.notification-row {
+    outline: none;
+}
+
+.notification {
+    background: #1e1e2eee;
+    border: 1px solid alpha(#cba6f7, 0.3);
+    border-radius: 12px;
+    margin: 4px 8px;
+    padding: 0;
+}
+
+.notification-content {
+    padding: 8px 12px;
+}
+
+.summary {
+    color: #cdd6f4;
+    font-weight: bold;
+}
+
+.body {
+    color: #a6adc8;
+}
+
+.time {
+    color: #6c7086;
+    font-size: 11px;
+}
+
+.close-button {
+    background: alpha(#f38ba8, 0.2);
+    color: #f38ba8;
+    border-radius: 50%;
+    min-width: 24px;
+    min-height: 24px;
+    margin: 4px;
+}
+
+.close-button:hover {
+    background: alpha(#f38ba8, 0.4);
+}
+
+.notification-action {
+    background: alpha(#cba6f7, 0.15);
+    color: #cba6f7;
+    border-radius: 8px;
+    margin: 4px;
+    padding: 4px 8px;
+}
+
+.notification-action:hover {
+    background: alpha(#cba6f7, 0.3);
+}
+
+.control-center {
+    background: #1e1e2eee;
+    border: 1px solid alpha(#cba6f7, 0.3);
+    border-radius: 16px;
+    margin: 8px;
+    padding: 12px;
+}
+
+.control-center-list {
+    background: transparent;
+}
+
+.widget-title {
+    color: #cba6f7;
+    font-weight: bold;
+    margin: 4px 8px;
+}
+
+.widget-dnd {
+    background: alpha(#cba6f7, 0.1);
+    border-radius: 8px;
+    margin: 4px 8px;
+    padding: 4px 8px;
+}
+
+.widget-dnd > switch {
+    border-radius: 8px;
+    background: #313244;
+}
+
+.widget-dnd > switch:checked {
+    background: alpha(#cba6f7, 0.4);
+}
+
+.widget-dnd > switch slider {
+    background: #cba6f7;
+    border-radius: 50%;
+}
