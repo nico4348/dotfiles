@@ -15,7 +15,7 @@ cd /tmp && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 
 ```bash
 sudo pacman -S \
-  zsh starship neovim vim \
+  zsh starship neovim vim bat eza fzf \
   waybar rofi swaync swayidle swaylock \
   ghostty kitty \
   cava fastfetch btop htop \
