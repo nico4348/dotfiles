@@ -103,8 +103,23 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Aliases
+alias cat="bat --style=auto"
+alias ls="eza --icons --group-directories-first"
+alias ll="eza --icons --group-directories-first -la"
+alias tree="eza --icons --tree"
+
+# fzf
+eval "$(fzf --zsh)"
+export FZF_DEFAULT_OPTS=" \
+  --color=bg+:#313244,bg:#1e1e2e,spinner:#cba6f7,hl:#cba6f7 \
+  --color=fg:#cdd6f4,header:#cba6f7,info:#89b4fa,pointer:#cba6f7 \
+  --color=marker:#a6e3a1,fg+:#cdd6f4,prompt:#cba6f7,hl+:#cba6f7 \
+  --border rounded --margin 1 --padding 1"
+
 # Starship prompt
 eval "$(starship init zsh)"
 
 # Fastfetch al abrir terminal
 fastfetch
+export PATH="$HOME/.local/bin:$PATH"
