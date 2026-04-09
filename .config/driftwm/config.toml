@@ -4,12 +4,17 @@ focus_follows_mouse = true
 
 # Programas al iniciar
 autostart = [
-    "ghostty",                              # terminal al arrancar
-    "waybar",                               # barra de estado (si la tienes)
-    "swaync",                               # notificaciones (si lo tienes)
+    "waybar",                               # barra de estado
+    "swaync",                               # notificaciones
     "wl-paste --watch cliphist store",      # historial de portapapeles
     "wlsunset -S 07:00 -s 19:00 -t 3500 -T 6500",  # luz azul: 3500K noche, 6500K dia
     "swayidle -w before-sleep 'swaylock -f -c 1e1e2e'",  # solo bloquea al suspender
+    "ghostty",                              # terminal 1
+    "ghostty",                              # terminal 2
+    "ghostty",                              # terminal 3
+    "ghostty",                              # terminal 4
+    "ghostty -e peaclock",                  # reloj
+    "brave",                                # navegador
 ]
 
 # === Variables de entorno ===
