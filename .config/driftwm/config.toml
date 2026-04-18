@@ -7,7 +7,9 @@ autostart = [
     "gnome-keyring-daemon --start --components=secrets,pkcs11", # keyring
     "waybar",                               # barra de estado
     "swaync",                               # notificaciones
-    "wl-paste --watch cliphist store",      # historial de portapapeles
+    "wl-paste --type text --watch cliphist store",   # historial portapapeles (texto)
+    "wl-paste --type image --watch cliphist store",  # historial portapapeles (imagen)
+    # ydotoold se lanza via systemd user service (enabled): systemctl --user status ydotool
     "wlsunset -S 07:00 -s 19:00 -t 3500 -T 6500",  # luz azul: 3500K noche, 6500K dia
     "swayidle -w before-sleep 'swaylock -f -c 1e1e2e'",  # solo bloquea al suspender
     "ghostty --title=term1",                # terminal 1
@@ -27,6 +29,7 @@ GBM_BACKEND = "nvidia-drm"
 __GLX_VENDOR_LIBRARY_NAME = "nvidia"
 WLR_NO_HARDWARE_CURSORS = "1"
 LIBVA_DRIVER_NAME = "nvidia"
+YDOTOOL_SOCKET = "/run/user/1000/.ydotool_socket"
 
 # === Teclado ===
 [input.keyboard]
@@ -89,12 +92,18 @@ shader_path = "~/.config/driftwm/dark_sea_purple.glsl"
 "mod+c" = "center-window"
 "mod+a" = "home-toggle"
 "mod+w" = "zoom-to-fit"
+# Portapapeles: rofi con historial de cliphist + auto-paste via ydotool.
+# Detecta el tipo del elemento seleccionado:
+#   - Imagen (cliphist marca "binary data") -> Ctrl+V       (29:1 47:1 47:0 29:0)
+#   - Texto                                  -> Ctrl+Shift+V (29:1 42:1 47:1 47:0 42:0 29:0)
+# Keycodes: 29=LCTRL, 42=LSHIFT, 47=V
+"mod+v" = "spawn sh -c 'SEL=$(cliphist list | rofi -dmenu -p clipboard); [ -z \"$SEL\" ] && exit; printf %s \"$SEL\" | cliphist decode | wl-copy; sleep 0.08; case \"$SEL\" in *\"binary data\"*) ydotool key 29:1 47:1 47:0 29:0 ;; *) ydotool key 29:1 42:1 47:1 47:0 42:0 29:0 ;; esac'"
 "mod+l" = "spawn swaylock -f -c 1e1e2e"
 "mod+ctrl+shift+q" = "quit"
 
 # Capturas de pantalla
 "Print" = "spawn grim - | wl-copy"
-"shift+Print" = "spawn grim -g \"$(slurp -d)\" - | wl-copy"
+"mod+shift+s" = "spawn grim -g \"$(slurp -d)\" - | wl-copy"
 
 # Volumen
 "XF86AudioRaiseVolume" = "spawn wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"

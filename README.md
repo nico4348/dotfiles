@@ -21,6 +21,7 @@ sudo pacman -S \
   cava fastfetch btop htop \
   pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber pavucontrol \
   grim slurp wl-clipboard cliphist hyprpicker imv mpv \
+  ydotool gnome-keyring \
   fuzzel wlsunset \
   thunar mousepad nano \
   networkmanager network-manager-applet \
@@ -46,6 +47,27 @@ yay -S --needed \
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
+
+### Servicios de usuario (systemd)
+
+`ydotoold` debe correr como servicio de usuario para que el keybind `mod+v`
+(paste automatico via rofi + cliphist) funcione en todas las apps:
+
+```bash
+systemctl --user enable --now ydotool
+```
+
+El socket queda en `/run/user/1000/.ydotool_socket` (ya configurado como
+`YDOTOOL_SOCKET` en `driftwm/config.toml`).
+
+## Portapapeles (mod+v)
+
+Flujo: `wl-paste --watch` → `cliphist` (store) → `rofi` (picker) → `ydotool` (auto-paste).
+
+- Dos watchers en autostart: texto e imagen por separado.
+- `mod+v` abre rofi con historial; al seleccionar, copia al clipboard y simula:
+  - `Ctrl+V` si es imagen (`binary data`)
+  - `Ctrl+Shift+V` si es texto (para que funcione dentro de terminales)
 
 ### Brave Browser (alternativa)
 
